@@ -25,23 +25,23 @@ The severity or importance of each topic is indicated by an emoji in the topic n
     .
     ├── Separating environments
     ├── Securing a cluster
-    │   ├── Securing Endpoints
-    │   ├── Securing ServiceAccounts and Secrets
+    │   ├── Securing endpoints for api server and cluster nodes
+    │   ├── Securing serviceAccounts and secrets
+    │   ├── Securing communication paths    
     │   ├── Monitoring and Auditing of security relevant events
-    │   ├── Running Benchmarks and tests to validate cluster setup   
+    │   ├── Running benchmarks and tests to validate cluster setup   
     │   ├── Configuration best practices       
-    ├── Ensuring Authentication/ Authorization
+    ├── Ensuring authentication and authorization
     │   ├── Configuring RBAC
-    │   │   ├── Users (Developers/ Administrators)
-    │   │   ├── Service Accounts
-    │   ├── Service Accounts
-    │   ├── Automating setup/ Maintenance tasks   
-    ├── Securing Workloads
-    │   ├── Secure Images and Admission Controller
-    │   ├── Pod Identities, Security Contexts and Pod Security Policies
-    │   ├── Network Segmentation
-    ├── Special Topics
-    │   ├── Private Clusters?
+    │   ├── Service accounts
+    │   ├── Automating setup/ maintenance tasks   
+    ├── Securing workloads
+    │   ├── Secure images and admission controller
+    │   ├── Pod identities, security contexts and pod security policies
+    │   ├── Network segmentation
+    ├── Special topics
+    │   ├── Private clusters?
+    │   ├── Forced tunneling
     └── Links
 
 ## Separating environments
@@ -49,19 +49,24 @@ The severity or importance of each topic is indicated by an emoji in the topic n
     > Concepts that can be applied to ensure security isolation for different workloads
     > Separating Subscriptions, Resource Groups, Azure RBAC, Service Accounts and Secrets
 
-- [ ] Cluster vs Namespace isolation
-- [ ] Dedicated nodes / hyper-v isolation on Nodes
-- [ ] Azure service principals and MSI
+- [ ] :fire: Cluster vs Namespace isolation
+- [ ] :fire: Azure service principals and MSI
+- [ ] :cloud: Dedicated nodes / hyper-v isolation on Nodes
 
 ## Securing a cluster
 
     > Understanding the cluster attack surface
     > Securing Service Accounts and secrets
+    > Securing and maintaining host vms
     > Monitoring and securing security events and logs
 
-- [ ] Master Endpoint security in AKS / ACS-Engine
-- [ ] Evaluation of security benchbmarks like KubeBench / CSI
-- [ ] Security Impact of activating addons and dashboard
+- [ ] :boom: Master Endpoint security in AKS / ACS-Engine
+- [ ] :boom: Securing access to host vms
+- [ ] :boom: Upgrading and mainting hosts, apparmor, linux capabilities filter, os security patching
+- [ ] :fire: Evaluation of security benchbmarks like KubeBench / CSI
+- [ ] :cloud: Security Impact of activating addons and dashboard
+- [ ] :cloud: Encrypted service to service communication
+- [ ] :cloud: Service Endpoints for PaaS Service lockdown
 
 
 ## Ensuring Authentication/ Authorization
@@ -70,8 +75,8 @@ The severity or importance of each topic is indicated by an emoji in the topic n
     > Understanding Azure AD setup and the risk impact on security
     > Minimizing the blast radius by applying least priviliges inside and outside the cluster
 
-- [ ] Azure AD Service Accounts and Groups
-- [ ] Maintaining Secrets
+- [ ] :fire: Azure AD Service Accounts and Groups
+- [ ] :fire: Maintaining Secrets
 
 ## Securing Workloads
 
@@ -79,9 +84,9 @@ The severity or importance of each topic is indicated by an emoji in the topic n
     > Defining Pod security and ensuring minimal attack surface and good security default on apps
     > Isolating ingoing and outgoing traffic and monitoring relevant behaviour
 
-- [ ] Image scanning in azure container registry and third party products like Twistlock, Neuvektor and Aqua
-- [ ] Ensuring adimission controllers on AKS / ACS-Engine
-- [ ] Capabilities of filtering network traffic with policies, azure firewall or network appliances
+- [ ] :fire: Image scanning in azure container registry and third party products like Twistlock, Neuvektor and Aqua
+- [ ] :cloud: Ensuring adimission controllers/ pod security policies, privileged pods, runasroot, volumes, fsGroups, hostports on AKS / ACS-Engine
+- [ ] :cloud: Capabilities of filtering network traffic with policies, azure firewall or network appliances
 
 ## Links
     > Good documentation that should be references
