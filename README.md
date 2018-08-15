@@ -1,4 +1,14 @@
 
+# Topics
+
+## Structure
+
+ * Overview
+ * Operational excellence
+ * [Security](./Security.md) 
+ * Performance efficiency          
+ *  Cost optimization
+
 # Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
