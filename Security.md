@@ -20,6 +20,15 @@ The severity or importance of each topic is indicated by an emoji in the topic n
 * :cloud: Medium
 * :partly_sunny: Low
 
+## First Principles:
+
+* Apply least privileged access
+* Segregation of responsibility
+* Integrate security into DevOps
+* Trust your sources
+* Minimise attack surfaxce
+* Apply security in a layered approach
+
 ## Structure
 
     .
