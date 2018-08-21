@@ -31,7 +31,7 @@ The severity or importance of each topic is indicated by an emoji in the topic n
 
 Table of Contents
 =================
-```
+
   * [Setting up environments](./Security_setting_up_environments.md) [BulletPoints](##setting-up-environments)
      * Separating environments
      * Setting up/ Validating virtual network
@@ -54,7 +54,7 @@ Table of Contents
      * Container sandboxes
      * Managing secrets and privileged information
   * Links
-```
+
 
 Setting up environments
 =================
