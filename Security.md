@@ -29,34 +29,35 @@ The severity or importance of each topic is indicated by an emoji in the topic n
 * Minimise attack surfaxce
 * Apply security in a layered approach
 
-## Structure
-
+Table of Contents
+=================
     .
-    ├── Setting up environments
-    │   ├── Separating environments
-    │   ├── Setting up/ Validating virtual network
-    │   ├── Provisioning clusters 
-    ├── Securing a cluster
-    │   ├── Securing endpoints for api server and cluster nodes
-    │   ├── Ensuring authentication and authorization
-    │   ├── Setting up & keeping least privileged access for common tasks
-    │   ├── Create administrative boundaries(namespaces) between resources as sample
-    │   ├── Securing communication paths between namespaces (and nodes)   
-    │   ├── Continous Monitoring and Auditing of security relevant events
-    │   ├── Running benchmarks and tests to validate cluster setup
-    │   ├── Regular maintenance, security and cleanup tasks
-    │   ├── Configuration best practices        
-    ├── Securing workloads
-    │   ├── DenyEscalatingExec, Pod identities, security contexts and pod security policies
-    │   ├── Securing serviceAccounts and secrets
-    │   ├── Network segmentation (Ingress/ Egress)
-    │   ├── Secure images and admission controller
-    │   ├── Container sandboxes
-    │   ├── Managing secrets and privileged information
+    ├──  [Setting up environments](#Setting up environments)
+    │   ├──  Separating environments
+    │   ├──  Setting up/ Validating virtual network
+    │   ├──  Provisioning clusters 
+    ├──  [Securing a cluster](#Securing a cluster)
+    │   ├──  Securing endpoints for api server and cluster nodes
+    │   ├──  Ensuring authentication and authorization
+    │   ├──  Setting up & keeping least privileged access for common tasks
+    │   ├──  Create administrative boundaries(namespaces) between resources as sample
+    │   ├──  Securing communication paths between namespaces (and nodes)   
+    │   ├──  Continous Monitoring and Auditing of security relevant events
+    │   ├──  Running benchmarks and tests to validate cluster setup
+    │   ├──  Regular maintenance, security and cleanup tasks
+    │   ├──  Configuration best practices        
+    ├──  [Securing workloads](#Securing workloads)
+    │   ├──  DenyEscalatingExec, Pod identities, security contexts and pod security policies
+    │   ├──  Securing serviceAccounts and secrets
+    │   ├──  Network segmentation (Ingress/ Egress)
+    │   ├──  Secure images and admission controller
+    │   ├──  Container sandboxes
+    │   ├──  Managing secrets and privileged information
     └── Links
 
 
-## Setting up environments
+Setting up environments
+=================
 
     > Concepts that can be applied to ensure security isolation for different workloads
     > Separating Subscriptions, Resource Groups, Azure RBAC, Service Accounts and Secret
@@ -67,7 +68,8 @@ The severity or importance of each topic is indicated by an emoji in the topic n
 - [ ] :fire: Inbound/ Outbound traffic (Forced Tunneling)
 - [ ] :fire: Setting up RBAC
 
-## Securing a cluster
+Securing a cluster
+=================
 
     > Understanding the cluster attack surface
     > Concepts that can be applied to configure and bootstrap authentication in azure
@@ -87,7 +89,8 @@ The severity or importance of each topic is indicated by an emoji in the topic n
 - [ ] :cloud: Encrypted service to service communication across nodes
 - [ ] :cloud: Service Endpoints for PaaS Service lockdown
 
-## Securing Workloads
+Securing Workloads
+=================
 
     > Understanding the attack surface from container images and laying out Microsoft 1st party and ecosystem options
     > Defining Pod security and ensuring minimal attack surface and good security default on apps
@@ -99,5 +102,7 @@ The severity or importance of each topic is indicated by an emoji in the topic n
 - [ ] :cloud: Container sandboxes, gVisor, kataContainers
 - [ ] :fire: Maintaining secrets in HashiCorpVaul, Azure KeyVault, Azure KMS Plugin
 
-## Links
+Links
+=================
+
     > Good documentation that should be references
