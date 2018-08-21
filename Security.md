@@ -31,11 +31,12 @@ The severity or importance of each topic is indicated by an emoji in the topic n
 
 Table of Contents
 =================
-  * [Setting up environments](./Security_setting_up_environments.md)
+```
+  * [Setting up environments](./Security_setting_up_environments.md) [BulletPoints](##setting-up-environments)
      * Separating environments
      * Setting up/ Validating virtual network
      * Provisioning clusters 
-  * [Securing a cluster](./Security_securing_a_cluster.md)
+  * [Securing a cluster](./Security_securing_a_cluster.md) [BulletPoints](##securing-a-cluster)
      * Securing endpoints for api server and cluster nodes
      * Ensuring authentication and authorization
      * Setting up & keeping least privileged access for common tasks
@@ -45,7 +46,7 @@ Table of Contents
      * Running benchmarks and tests to validate cluster setup
      * Regular maintenance, security and cleanup tasks
      * Configuration best practices        
-  *  [Securing workloads](./Security_securing_workloads.md)
+  *  [Securing workloads](./Security_securing_workloads.md) [BulletPoints](##securing-workloads) (Dennis)
      * DenyEscalatingExec, Pod identities, security contexts and pod security policies
      * Securing serviceAccounts and secrets
      *  Network segmentation (Ingress/ Egress)
@@ -53,7 +54,7 @@ Table of Contents
      * Container sandboxes
      * Managing secrets and privileged information
   * Links
-
+```
 
 Setting up environments
 =================
