@@ -24,24 +24,26 @@ The severity or importance of each topic is indicated by an emoji in the topic n
 
     .
     ├── Separating environments
+    ├── Setting up environments
+    │   ├── Setting up/ Validating virtual network
+    │   ├── Provisioning clusters 
     ├── Securing a cluster
     │   ├── Securing endpoints for api server and cluster nodes
-    │   ├── Securing serviceAccounts and secrets
-    │   ├── Securing communication paths    
-    │   ├── Monitoring and Auditing of security relevant events
-    │   ├── Running benchmarks and tests to validate cluster setup   
-    │   ├── Configuration best practices       
-    ├── Ensuring authentication and authorization
-    │   ├── Configuring RBAC
-    │   ├── Service accounts
-    │   ├── Automating setup/ maintenance tasks   
+    │   ├── Ensuring authentication and authorization
+    │   ├── Setting up & keeping least privileged access for common tasks
+    │   ├── Create administrative boundaries(namespaces) between resources as sample
+    │   ├── Securing communication paths between namespaces (and nodes)   
+    │   ├── Continous Monitoring and Auditing of security relevant events
+    │   ├── Running benchmarks and tests to validate cluster setup
+    │   ├── Regular maintenance, security and cleanup tasks
+    │   ├── Configuration best practices        
     ├── Securing workloads
+    │   ├── DenyEscalatingExec, Pod identities, security contexts and pod security policies
+    │   ├── Securing serviceAccounts and secrets
+    │   ├── Network segmentation (Ingress/ Egress)
     │   ├── Secure images and admission controller
-    │   ├── Pod identities, security contexts and pod security policies
-    │   ├── Network segmentation
-    ├── Special topics
-    │   ├── Private clusters?
-    │   ├── Forced tunneling
+    │   ├── Container sandboxes
+    │   ├── Managing secrets and privileged information
     └── Links
 
 ## Separating environments
@@ -49,34 +51,36 @@ The severity or importance of each topic is indicated by an emoji in the topic n
     > Concepts that can be applied to ensure security isolation for different workloads
     > Separating Subscriptions, Resource Groups, Azure RBAC, Service Accounts and Secrets
 
-- [ ] :fire: Cluster vs Namespace isolation
+- [ ] :fire: Cluster vs Nodes vs Namespace isolation
 - [ ] :fire: Azure service principals and MSI
 - [ ] :cloud: Dedicated nodes / hyper-v isolation on Nodes
+
+## Setting up environments
+
+    > 
+    
+- [ ] :fire: Inbound/ Outbound traffic (Forced Tunneling)
+- [ ] :fire: Setting up RBAC
 
 ## Securing a cluster
 
     > Understanding the cluster attack surface
-    > Securing Service Accounts and secrets
+    > Concepts that can be applied to configure and bootstrap authentication in azure
+    > Minimizing the blast radius by applying least priviliges inside and outside the cluster
     > Securing and maintaining host vms
     > Monitoring and securing security events and logs
 
 - [ ] :boom: Master Endpoint security in AKS / ACS-Engine
 - [ ] :boom: Securing access to host vms
+- [ ] :boom: Configure RBAC
+- [ ] :boom: Continous security using tools like Aqua, NeuVektor, Twistlock, SysDig
+- [ ] :boom: Configure "dev" namespaces with permissions, rolebindings resource quotas and users
 - [ ] :boom: Upgrading and mainting hosts, apparmor, linux capabilities filter, os security patching
 - [ ] :fire: Evaluation of security benchbmarks like KubeBench / CSI
+- [ ] :cloud: Maintenance of certificate and key rotation, cleanup of docker registry
 - [ ] :cloud: Security Impact of activating addons and dashboard
-- [ ] :cloud: Encrypted service to service communication
+- [ ] :cloud: Encrypted service to service communication across nodes
 - [ ] :cloud: Service Endpoints for PaaS Service lockdown
-
-
-## Ensuring Authentication/ Authorization
-
-    > Concepts that can be applied to configure and bootstrap authentication in azure
-    > Understanding Azure AD setup and the risk impact on security
-    > Minimizing the blast radius by applying least priviliges inside and outside the cluster
-
-- [ ] :fire: Azure AD Service Accounts and Groups
-- [ ] :fire: Maintaining Secrets
 
 ## Securing Workloads
 
@@ -84,9 +88,11 @@ The severity or importance of each topic is indicated by an emoji in the topic n
     > Defining Pod security and ensuring minimal attack surface and good security default on apps
     > Isolating ingoing and outgoing traffic and monitoring relevant behaviour
 
-- [ ] :fire: Image scanning in azure container registry and third party products like Twistlock, Neuvektor and Aqua
-- [ ] :cloud: Ensuring adimission controllers/ pod security policies, privileged pods, runasroot, volumes, fsGroups, hostports on AKS / ACS-Engine
+- [ ] :fire: Image scanning in azure container registry, ValidatingAdmissionWebhook and third party products like Twistlock, Neuvektor and Aqua
+- [ ] :cloud: Ensuring DenyEscalatingExec adimission controllers/ pod security policies, privileged pods, runasroot, volumes, fsGroups, hostports on AKS / ACS-Engine
 - [ ] :cloud: Capabilities of filtering network traffic with policies, azure firewall or network appliances
+- [ ] :cloud: Container sandboxes, gVisor, kataContainers
+- [ ] :fire: Maintaining secrets in HashiCorpVaul, Azure KeyVault, Azure KMS Plugin
 
 ## Links
     > Good documentation that should be references
