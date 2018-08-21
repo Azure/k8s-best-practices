@@ -23,8 +23,8 @@ The severity or importance of each topic is indicated by an emoji in the topic n
 ## Structure
 
     .
-    ├── Separating environments
     ├── Setting up environments
+    │   ├── Separating environments
     │   ├── Setting up/ Validating virtual network
     │   ├── Provisioning clusters 
     ├── Securing a cluster
@@ -46,19 +46,15 @@ The severity or importance of each topic is indicated by an emoji in the topic n
     │   ├── Managing secrets and privileged information
     └── Links
 
-## Separating environments
-
-    > Concepts that can be applied to ensure security isolation for different workloads
-    > Separating Subscriptions, Resource Groups, Azure RBAC, Service Accounts and Secrets
-
-- [ ] :fire: Cluster vs Nodes vs Namespace isolation
-- [ ] :fire: Azure service principals and MSI
-- [ ] :cloud: Dedicated nodes / hyper-v isolation on Nodes
 
 ## Setting up environments
 
-    > 
+    > Concepts that can be applied to ensure security isolation for different workloads
+    > Separating Subscriptions, Resource Groups, Azure RBAC, Service Accounts and Secret
     
+- [ ] :fire: Cluster vs Nodes vs Namespace isolation
+- [ ] :fire: Azure service principals and MSI
+- [ ] :cloud: Dedicated nodes / hyper-v isolation on Nodes
 - [ ] :fire: Inbound/ Outbound traffic (Forced Tunneling)
 - [ ] :fire: Setting up RBAC
 
