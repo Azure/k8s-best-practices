@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: limit-deny-external-egress
+spec:
+  podSelector:
+    matchLabels:
+      run: psqldemo
+  policyTypes:
+  - Egress
+  egress:
+  - ports:
+    - port: 53
+      protocol: UDP
+    - port: 53
+      protocol: TCP
+    - port: 5432
+      protocol: TCP
+    to:
+    - ipBlock:
+        cidr: 168.63.129.0/24
+    - ipBlock:
+        cidr: 191.237.232.0/22
