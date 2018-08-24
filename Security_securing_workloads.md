@@ -18,9 +18,9 @@ Table of Contents
 
 - [ ] :fire: Image scanning in azure container registry, ValidatingAdmissionWebhook and third party products like Twistlock, Neuvektor and Aqua
 - [ ] :cloud: Ensuring DenyEscalatingExec adimission controllers/ pod security policies, privileged pods, runasroot, volumes, fsGroups, hostports on AKS / ACS-Engine
+- [ ] :cloud: Maintaining secrets in HashiCorpVaul, Azure KeyVault, Azure KMS Plugin
 - [ ] :cloud: Capabilities of filtering network traffic with policies, azure firewall or network appliances
 - [ ] :cloud: Container sandboxes, gVisor, kataContainers
-- [ ] :fire: Maintaining secrets in HashiCorpVaul, Azure KeyVault, Azure KMS Plugin
 
 ## Image protection
 
@@ -35,6 +35,8 @@ AKS supports the following admission controllers: https://docs.microsoft.com/en-
 
 ### DenyEscalatingExec 
 
+> Usefullness?
+
 
 ### Pod security policies
 
@@ -44,10 +46,18 @@ A `Pod Security Policy` is a cluster-level resource that can enforce rules on se
 
 ## Maintaining secrets
 
+
 KeyVault Flex Volume: https://github.com/Azure/kubernetes-keyvault-flexvol
 Kubernetes KMS plugin: https://github.com/Azure/kubernetes-kms 
 Key Vault Agent: https://github.com/Hexadite/acs-keyvault-agent 
 
 ## Network policies
+
+A network policy is a specification of how groups of pods are allowed to communicate with each other and other network endpoints.
+This allows for locking down traffic from/to specific sets of pods according to metadata/namespace assignment based on IP rules. For the enforcement of dns based rules the usage of a service mesh technology like Istio can be usefull.
+
+As of today AKS supports the following options for enforcing network policies:
+- https://github.com/cloudnativelabs/kube-router
+- https://github.com/Azure/azure-container-networking/tree/master/npm
 
 Good sample network policies recipes: https://github.com/ahmetb/kubernetes-network-policy-recipes 

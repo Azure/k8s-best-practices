@@ -13,6 +13,6 @@ Table of Contents
 
 - [ ] :fire: Cluster vs Nodes vs Namespace isolation
 - [ ] :fire: Azure service principals and MSI
+- [ ] :fire: Inbound/ Outbound traffic control
+- [ ] :fire: Setting up RBAC roles and default bindings
 - [ ] :cloud: Dedicated nodes / hyper-v isolation on Nodes
-- [ ] :fire: Inbound/ Outbound traffic (Forced Tunneling)
-- [ ] :fire: Setting up RBAC
