@@ -3,11 +3,11 @@
 
 ## Structure
 
- * Overview
- * Operational excellence
- * [Security](./Security.md) 
- * Performance efficiency          
- *  Cost optimization
+ * [Overview](./Overview.md)
+ * [Operational excellence](./Operational_Excellence.md)
+ * [Security](./Security.md)
+ * Performance efficiency
+ * [Cost optimization](./Cost_Optimization.md)
 
 # Contributing
 
