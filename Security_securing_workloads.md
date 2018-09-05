@@ -24,7 +24,6 @@ Table of Contents
 
 ## Image protection
 
-
 For multitentant clusters it is useful to enforce the image pull policy to Always - see AlwaysPullImages admission controller
 
 ## Admission controlers
