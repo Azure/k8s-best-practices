@@ -28,13 +28,13 @@ The severity or importance of each topic is indicated by an emoji in the topic n
 Table of Contents
 =================
 
-* Deployment
+* [Deployment](./Operational_Excellence_deployment.md)
     * Infrastructure as Code
         * Azure Resource Manager templates
         * Terraform
     * Helm charts
-    * [Choose the right VM size for your agent nodes](./Cost_Optimization.md)
-* Maintenance
+    * [Choose the right VM size for your nodes](./Cost_Optimization.md#node---vm-sizes)
+* [Maintenance](./Operational_Excellence_maintenance.md)
     * Patch management
     * Upgrade management
 * Monitoring
@@ -46,8 +46,9 @@ Table of Contents
     * Kubernetes RBAC
     * Azure Active Directory integration
 * Scaling
-    * [Cluster Autoscaler](./Cost_Optimization.md)
-    * [Horizontal Pod Autoscaler](./Cost_Optimization.md)
+    * [Cluster Autoscaler](./Cost_Optimization.md#cluster-autoscaler)
+    * [Horizontal Pod Autoscaler](./Cost_Optimization.md#horizontal-pod-autoscaler)
+    * [Azure Container Instances connector](./Cost_Optimization.md#azure-container-instances-connector)
 * Troubleshooting
     * Common issues
     * Kubelet logs
