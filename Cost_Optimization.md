@@ -72,7 +72,7 @@ AKS clusters for dev/test can be operated with the VM sizes Standard_B2ms, Stand
 Links
 =================
 
-* [Cluster Autoscaler on Azure Kubernetes Service (AKS) - Preview:](https://docs.microsoft.com/en-us/azure/aks/autoscaler)
-* [Horizontal Pod Autoscaler Walkthrough:](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/)
+* [Cluster Autoscaler on Azure Kubernetes Service (AKS) - Preview](https://docs.microsoft.com/en-us/azure/aks/autoscaler)
+* [Horizontal Pod Autoscaler Walkthrough](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/)
 * [Use Virtual Kubelet with Azure Kubernetes Service (AKS)](https://docs.microsoft.com/en-us/azure/aks/virtual-kubelet)
 * [Sizes for Linux virtual machines in Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/sizes)
