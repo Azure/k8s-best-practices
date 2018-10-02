@@ -31,6 +31,19 @@ The severity or importance of each topic is indicated by an emoji in the topic n
 * Integrate security in every process
 * Keep security simple
 
+## Overview on technical aspects of securing an Kubernetes environment
+
+The following diagram shows an overview of the most relevant aspects of security.
+![](/securing_a_cluster/securing_a_cluster.png)
+
+1. Securing the api server authentication/ authorization
+2. Securing ingress and egress traffic from and to your cluster
+3. Securing images
+4. Securing secrets and connection strings in your applications
+5. Securing network isolation of pods and app resources
+6. Securing pods and pod capabilities
+These topics and additional aspects of security will be described in the following chapters. Please see this as a guide towards a secure design of your cluster. While we strongly recommend that you evaluate your security needs and capabilities in your environment this does not mean that you have to apply everything as it will incur costs and increase operational complexity.
+
 Table of Contents
 =================
 
@@ -52,7 +65,7 @@ Table of Contents
     * DenyEscalatingExec, Pod identities, security contexts and pod security policies
     * Securing serviceAccounts and secrets
     * Network segmentation (Ingress/ Egress)
-    * Secure images and admission controller
+    * Secure images and pod admission controller
     * Container sandboxes
     * Managing secrets and privileged information
 * Links

@@ -1,5 +1,5 @@
 # Securing a cluster
-
+Objectives:
     > Understanding the cluster attack surface
     > Concepts that can be applied to configure and bootstrap authentication in azure
     > Minimizing the blast radius by applying least priviliges inside and outside the cluster
@@ -42,11 +42,20 @@ By default, SSH access to the Control Planes is not permitted as AKS is a manage
 
 The recommended practice is to generate your own SSH Keys ahead of Cluster creation and secure those keys in something like Azure Key Vault (AZK). This was the keys are not floating around or stored on a server for someone to use.
 
-## Default RBAC Setup
+## RBAC Setup for users and service accounts
+The activation of RBAC in the AKS api server is ensured by default - it is strongly recommended to deploy only clusters with activated RBAC - ideally the administrators and developers should also be using identities from azure ad. By default the privilegs on workloads and users should be kept to a minimum. That means that the usage of the *cluster-admin* role should be minimized for the creation of namespaces, resource quotas and cluster-wide operations - and not for daily operations.
+The deployment and upgrade of applications should be performed by application specific users/ service accounts as specified in 
+```bash
+securing_a_cluster/role_deployment_manager.yaml
+```
+If multiple independant applications are operated within the same cluster via helm, then it might make sense to create a dedicated service account for tiller that only has deployment permissions in the desired application namespace. See here for further details: https://github.com/helm/helm/blob/master/docs/rbac.md#example-deploy-tiller-in-a-namespace-restricted-to-deploying-resources-only-in-that-namespace 
+In addition the creation of a dedicated role looking at logs might be useful as specified in
+```bash
+securing_a_cluster/role_log_reader.yaml
+```
+Please consider if the usage of the dashboard is required for your enterprise. By default the dashboard service account will not have enough permissions to display all objects or change them - which is considered a good practice. It is *not recommended* to upgrade the role permissions to cluster-admin.
 
-??? - Dennis has some stuff that he has done that could go here.
-
-## Continuous Security (Should this be called Image Management)
+## Container Image security
 
 One could argue that Container Image Management is one of the most critical parts of using Containers. It all starts with DevOps and the ability to automate the deployment of Applications/Services into AKS. If you trust where the images are coming from and put policy restrictions in place so that only trusted images are deployed into the AKS Cluster, that is half the battle.
 
@@ -64,17 +73,13 @@ kubectl apply -f securing-a_cluster/namespace-quotas.yaml
 
 ## Upgrading and Maintaing Hosts
 
-??? - Not sure we can do anythig in this area today.
+As security patches are applied to all nodes in a cluster on a nightly basis you still need to ensure that a potentially required restart is done accordingly. The options are described in the aks faq https://docs.microsoft.com/en-us/azure/aks/faq#are-security-updates-applied-to-aks-agent-nodes. You are left with the responsibility to ensure that these reboots are done in time and that enough spare capacity is available in your cluster while the restart is done to ensure that your workloads can continue to operate.
 
 ## Security Benchmarks
 
 The purpose of running security benchmarks is to ensure that the proper policy, procedures and controls are in place when an AKS Cluster is created. By running a simple check we can ensure things are ready to go and in place from a security perspective.
 
 Kubebench is a great example of one of the tools, click [here](https://github.com/aquasecurity/kube-bench) for more details.
-
-## Certificate Maintenance and Rotation
-
-??? - Rolling certificates in AKS today is not possible as access to the Control Plane is not allowed. It is on the roadmap, but not sure what, if anything, we do in the interim.
 
 ## Activating Add-ons
 
@@ -90,7 +95,7 @@ So how do we deal with this trust problem? Typically the risk can be mitigated w
 
 ## Private API Server and Service Endpoints
 
-Many Organizations are concerned that the Kubernetes API Server is Publicly exposed and are asking for a Private Endpoint. Private Endpoints are not an option today, but are on the roadmap. The ability to lock down access to the Public Endpoint to only certain VNETs (Service Endpoints) is also not available today, but on the roadmap.
+Many Organizations are concerned that the Kubernetes API Server is Publicly exposed and are asking for a Private Endpoint. Private Endpoints are not an option today, but are on the roadmap. The ability to lock down access to the Public Endpoint to only certain VNETs (Service Endpoints) is also not available today, but on the roadmap. It is however already possible to put connected azure resources like databases, storage or keyvault into a dedicated vnet and secure the access to your data via service endpoints.
 
 **A bit of a duplicate of the first API Server section.**
 

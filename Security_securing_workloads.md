@@ -1,5 +1,5 @@
 # Securing workloads
-
+Objectives:
     > Understanding the attack surface from container images and laying out Microsoft 1st party and ecosystem options for securing images
     > Ensuring minimal attack surface and good minimal security default on apps
     > Protecting secret information and workloads from each other
@@ -24,7 +24,7 @@ Table of Contents
 
 ## Image protection
 
-For multitentant clusters it is useful to enforce the image pull policy to Always - see AlwaysPullImages admission controller
+For multitentant clusters it is useful to enforce the image pull policy to Always - see AlwaysPullImages admission controller documentation https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#alwayspullimages 
 
 ## Admission controlers
 
@@ -36,7 +36,6 @@ AKS supports the following admission controllers: https://docs.microsoft.com/en-
 
 > Usefullness?
 
-
 ### Pod security policies
 
 A `Pod Security Policy` is a cluster-level resource that can enforce rules on security aspects of a pod specification and affect the `SecurityContext`that will be applied to a pod and and container. It will be stored as an configuration object that defines conditions that a pod must run with in order to be accepted into the cluster.
@@ -45,9 +44,16 @@ A `Pod Security Policy` is a cluster-level resource that can enforce rules on se
 
 ## Maintaining secrets
 
+Generally speaking there are two options to store and secure secrets/ connection strings in AKS.
+1. Using the default mechanism for configuring and mainting secrets via the secret object model :https://kubernetes.io/docs/concepts/configuration/secret/  
+2. Keeping secret information not in your cluster but in azure keyvault
 
-KeyVault Flex Volume: https://github.com/Azure/kubernetes-keyvault-flexvol
+While the first option of using kubernetes native secret management has the obvious advantage of simplified operations it incurs the risk of credential leakage if your cluster is breached or someone with existing cluster access uses his privileges to access to retrieve connections strings and secrets. Therefore this approach requires the lockdown of access to secrets via RBAC and a good way of recycling and upgrading secret information on a regular basis. In addition the encryption of etcd can be performed by using azure keyvault to secure the encryption key - this protects the retrieval of secret information from attackers that can access the environment.
 Kubernetes KMS plugin: https://github.com/Azure/kubernetes-kms 
+
+The second approach can further improve the security setup by ensuring that all secret information is stored within the azure keyvault. Each pod therefore has to authenticate to azure ad and retrieve its assigned secrets information upon startup and refresh the access regularly. This option can also be used to ensure that all secret information is only available in memory and never written to disk - neither in etcd or environment variables. This can be combined with the usage of aad-pod-identity which makes use of azure managed service identity to grant a unique identity to each pod.
+AAD Pod Identity: https://github.com/Azure/aad-pod-identity
+KeyVault Flex Volume: https://github.com/Azure/kubernetes-keyvault-flexvol
 Key Vault Agent: https://github.com/Hexadite/acs-keyvault-agent 
 
 ## Network policies
