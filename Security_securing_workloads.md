@@ -51,6 +51,8 @@ Generally speaking there are two options to store and secure secrets/ connection
 While the first option of using kubernetes native secret management has the obvious advantage of simplified operations it incurs the risk of credential leakage if your cluster is breached or someone with existing cluster access uses his privileges to access to retrieve connections strings and secrets. Therefore this approach requires the lockdown of access to secrets via RBAC and a good way of recycling and upgrading secret information on a regular basis. In addition the encryption of etcd can be performed by using azure keyvault to secure the encryption key - this protects the retrieval of secret information from attackers that can access the environment.
 Kubernetes KMS plugin: https://github.com/Azure/kubernetes-kms 
 
+> AKS does not support KMS plugin today.
+
 The second approach can further improve the security setup by ensuring that all secret information is stored within the azure keyvault. Each pod therefore has to authenticate to azure ad and retrieve its assigned secrets information upon startup and refresh the access regularly. This option can also be used to ensure that all secret information is only available in memory and never written to disk - neither in etcd or environment variables. This can be combined with the usage of aad-pod-identity which makes use of azure managed service identity to grant a unique identity to each pod.
 AAD Pod Identity: https://github.com/Azure/aad-pod-identity
 KeyVault Flex Volume: https://github.com/Azure/kubernetes-keyvault-flexvol

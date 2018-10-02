@@ -42,6 +42,7 @@ The following diagram shows an overview of the most relevant aspects of security
 4. Securing secrets and connection strings in your applications
 5. Securing network isolation of pods and app resources
 6. Securing pods and pod capabilities
+
 These topics and additional aspects of security will be described in the following chapters. Please see this as a guide towards a secure design of your cluster. While we strongly recommend that you evaluate your security needs and capabilities in your environment this does not mean that you have to apply everything as it will incur costs and increase operational complexity.
 
 Table of Contents
