@@ -42,7 +42,7 @@ Table of Contents
   * AKS master components
   * acs-engine
 * Networking
-  * Public and Private Ingresses
+  * [Private Ingress](Networking_PrivateIngress.md)
 * Identity and permissions
   * Azure RBAC roles
   * Kubernetes RBAC
