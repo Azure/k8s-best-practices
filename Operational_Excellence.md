@@ -21,7 +21,7 @@ The severity or importance of each topic is indicated by an emoji in the topic n
 * :cloud: Medium
 * :partly_sunny: Low
 
-## Operational principles:
+## Operational principles
 
 * TBD
 
@@ -29,30 +29,32 @@ Table of Contents
 =================
 
 * [Deployment](./Operational_Excellence_deployment.md)
-    * Infrastructure as Code
-        * Azure Resource Manager templates
-        * Terraform
-    * Helm charts
-    * [Choose the right VM size for your nodes](./Cost_Optimization.md#node---vm-sizes)
+  * Infrastructure as Code
+    * Azure Resource Manager templates
+    * Terraform
+  * Helm charts
+  * [Choose the right VM size for your nodes](./Cost_Optimization.md#node---vm-sizes)
 * [Maintenance](./Operational_Excellence_maintenance.md)
-    * Patch management
-    * Upgrade management
+  * Patch management
+  * Upgrade management
 * Monitoring
-    * AKS cluster
-    * AKS master components
-    * acs-engine
+  * AKS cluster
+  * AKS master components
+  * acs-engine
+* Networking
+  * Public and Private Ingresses
 * Identity and permissions
-    * Azure RBAC roles
-    * Kubernetes RBAC
-    * Azure Active Directory integration
+  * Azure RBAC roles
+  * Kubernetes RBAC
+  * Azure Active Directory integration
 * Scaling
-    * [Cluster Autoscaler](./Cost_Optimization.md#cluster-autoscaler)
-    * [Horizontal Pod Autoscaler](./Cost_Optimization.md#horizontal-pod-autoscaler)
-    * [Azure Container Instances connector](./Cost_Optimization.md#azure-container-instances-connector)
+  * [Cluster Autoscaler](./Cost_Optimization.md#cluster-autoscaler)
+  * [Horizontal Pod Autoscaler](./Cost_Optimization.md#horizontal-pod-autoscaler)
+  * [Azure Container Instances connector](./Cost_Optimization.md#azure-container-instances-connector)
 * Troubleshooting
-    * Common issues
-    * Kubelet logs
-    * SSH node access
+  * Common issues
+  * Kubelet logs
+  * SSH node access
 * Links
 
 Links
