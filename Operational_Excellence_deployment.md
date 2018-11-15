@@ -1,5 +1,6 @@
 # Deployment
 Objectives:
+
     > Using Infrastructure as Code for declarative and reusable deployments
     > Using helm charts for complex application deployments
     > Find the best VM size to fit the workload requirements
