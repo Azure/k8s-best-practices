@@ -1,3 +1,13 @@
+# View Container State
+ContainerInventory
+| where TimeGenerated >= ago(30m)
+| summarize AggregatedValue = dcount(ContainerID) by ContainerState
+| render piechart 
+
+# Get all KubeEvents and remember to filter out what is needed
+KubeEvents
+| where  TimeGenerated >= ago(1h)
+
 # View AKS CPU
 
 let endDateTime = now();
