@@ -1,4 +1,37 @@
-# Bar based logs based on namespaces
+# Based based CPU metrics on namespaces
+
+// **************************
+// CPU consumption
+// **************************
+KubePodInventory
+| where ClusterName == 'coin-test-i' 
+| where isnotempty(Computer) // eliminate unscheduled pods
+| where PodStatus in ('Running','Unknown')
+| summarize by bin(TimeGenerated, 1m), Computer, ClusterId, ContainerName, Namespace
+| project TimeGenerated, InstanceName = strcat(ClusterId, '/', ContainerName), Namespace
+| join (
+Perf
+| where ObjectName == 'K8SContainer'
+| where CounterName == 'cpuUsageNanoCores'
+| summarize UsageValue = max(CounterValue) by bin(TimeGenerated, 1m), Computer, InstanceName, CounterName
+| project-away CounterName
+| join kind = fullouter 
+(Perf
+| where ObjectName == 'K8SContainer'
+| where CounterName == 'cpuRequestNanoCores'
+| summarize RequestValue = max(CounterValue) by bin(TimeGenerated, 1m), Computer, InstanceName, CounterName
+| project-away CounterName
+) on Computer, InstanceName, TimeGenerated
+| project TimeGenerated = iif(isnotempty(TimeGenerated), TimeGenerated, TimeGenerated1), 
+          Computer = iif(isnotempty(Computer), Computer, Computer1),
+          InstanceName = iif(isnotempty(InstanceName), InstanceName, InstanceName1),
+          UsageValue = iif(isnotempty(UsageValue), UsageValue, 0.0), 
+          RequestValue = iif(isnotempty(RequestValue), RequestValue, 0.0)
+| extend ConsumedValue = iif(UsageValue > RequestValue, UsageValue, RequestValue)
+) on InstanceName, TimeGenerated
+| summarize TotalCpuConsumedCores = sum(ConsumedValue) / 60 / 1000000 by bin(TimeGenerated, 1h), Namespace
+
+# Bar based memory metrics based on namespaces
 // ********************
 // memory usage
 // ********************
