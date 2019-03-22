@@ -1,3 +1,36 @@
+# Bar based logs based on namespaces
+// ********************
+// memory usage
+// ********************
+KubePodInventory
+| where ClusterName == 'coin-test-i' 
+| where isnotempty(Computer) // eliminate unscheduled pods
+| where PodStatus in ('Running','Unknown')
+| summarize by bin(TimeGenerated, 1m), Computer, ClusterId, ContainerName, Namespace
+| project TimeGenerated, InstanceName = strcat(ClusterId, '/', ContainerName), Namespace
+| join (
+Perf
+| where ObjectName == 'K8SContainer'
+| where CounterName == 'memoryRssBytes'
+| summarize UsageValue = max(CounterValue) by bin(TimeGenerated, 1m), Computer, InstanceName, CounterName
+| project-away CounterName
+| join kind = fullouter 
+(Perf
+| where ObjectName == 'K8SContainer'
+| where CounterName == 'memoryRequestBytes'
+| summarize RequestValue = max(CounterValue) by bin(TimeGenerated, 1m), Computer, InstanceName, CounterName
+| project-away CounterName
+) on Computer, InstanceName, TimeGenerated
+| project TimeGenerated = iif(isnotempty(TimeGenerated), TimeGenerated, TimeGenerated1), 
+          Computer = iif(isnotempty(Computer), Computer, Computer1),
+          InstanceName = iif(isnotempty(InstanceName), InstanceName, InstanceName1),
+          UsageValue = iif(isnotempty(UsageValue), UsageValue, 0.0), 
+          RequestValue = iif(isnotempty(RequestValue), RequestValue, 0.0)
+| extend ConsumedValue = iif(UsageValue > RequestValue, UsageValue, RequestValue)
+) on InstanceName, TimeGenerated
+| summarize TotalMemoryConsumedMb = sum(ConsumedValue) / 60 / 1024 / 1024 by bin(TimeGenerated, 1h), Namespace
+
+
 # View Container State
 ContainerInventory
 | where TimeGenerated >= ago(30m)
