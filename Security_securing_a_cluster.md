@@ -43,7 +43,7 @@ By default, SSH access to the Control Planes is not permitted as AKS is a manage
 The recommended practice is to generate your own SSH Keys ahead of Cluster creation and secure those keys in something like Azure Key Vault (AZK). This was the keys are not floating around or stored on a server for someone to use.
 
 ## RBAC Setup for users and service accounts
-The activation of RBAC in the AKS api server is ensured by default - it is strongly recommended to deploy only clusters with activated RBAC - ideally the administrators and developers should also be using identities from azure ad. By default the privilegs on workloads and users should be kept to a minimum. That means that the usage of the *cluster-admin* role should be minimized for the creation of namespaces, resource quotas and cluster-wide operations - and not for daily operations.
+The activation of RBAC in the AKS api server is ensured by default - it is strongly recommended to deploy only clusters with activated RBAC - ideally the administrators and developers should also be using identities from azure ad. By default the privileges on workloads and users should be kept to a minimum. That means that the usage of the *cluster-admin* role should be minimized for the creation of namespaces, resource quotas and cluster-wide operations - and not for daily operations.
 The deployment and upgrade of applications should be performed by application specific users/ service accounts as specified in 
 ```bash
 securing_a_cluster/role_deployment_manager.yaml
