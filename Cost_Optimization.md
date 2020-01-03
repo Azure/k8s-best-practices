@@ -69,7 +69,7 @@ For special requirements like GPUs you can go with different VM sizes out of the
 
 AKS clusters for dev/test can be operated with the VM sizes Standard_B2ms, Standard_B4ms or Standard_B8ms to reduce runtime cost compared against the same sizes out of the Dv3-series.
 
-Additionally it is valueable to get the input from the developers who is developing the application about what they believe is the requirement for a worker node GPU/CPU/Memory/IOPS wise. Based on this output you should select the given 't-shirt' side of the worker node. 
+Additionally it is valueable to get the input from the developers who is developing the application about what they believe is the requirement for a worker node GPU/CPU/Memory/IOPS wise. Based on this output you should select the given 't-shirt' size of the worker node. 
 
 # Links
 
